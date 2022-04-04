@@ -1,0 +1,30 @@
+#library
+library(covid19.analytics)
+
+#Data
+ag <- covid19.data(case = 'aggregated')
+tsc <- covid19.data(case = 'ts-confirmed')
+tsa <- covid19.data(case = 'ts-ALL')
+
+#Summary
+report.summary(Nentries = 10, 
+               graphical.output = T)
+
+#Totals per location
+tots.per.location(tsc, geo.loc='US')
+#tots.per.location(tsc, geo.loc=c('US,India')  #Addition of Own
+                  
+#Growth Rate
+growth.rate(tsc,geo.loc = 'US')
+#growth.rate(tsc,geo.loc = c('US','India')     #Addition of own
+            
+# Totals plot
+totals.plt(tsa, c('India'))
+
+# World Map
+live.map(tsc)
+
+
+# SIR Model
+generate.SIR.model(tsc, 'US', tot.population = 329500000)
+#generate.SIR.model(tsc, 'India', tot.population = 1380000000) #Addition of own
